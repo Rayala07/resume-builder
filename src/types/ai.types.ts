@@ -22,3 +22,12 @@ export interface GenerateExperienceBody {
   company: string;
   techStack: string[];
 }
+
+export interface ImproveContentBody {
+  content: string;
+}
+
+export interface AtsScoreBody {
+  resumeContent: string;
+  targetRole: string;
+}
