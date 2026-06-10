@@ -1,26 +1,208 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
   --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-background-tertiary: var(--background-tertiary);
+  --color-surface: var(--surface);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-elevated: var(--surface-elevated);
+  
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-primary-glow: var(--primary-glow);
+  
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+  --color-foreground-disabled: var(--foreground-disabled);
+  
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-focus: var(--border-focus);
+  
+  --color-input-background: var(--input-background);
+  --color-input-border: var(--input-border);
+  --color-input-placeholder: var(--input-placeholder);
+  --color-input-focus: var(--input-focus);
+  
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  
+  --font-sans: var(--font-sans);
+  
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-glow-primary: var(--glow-primary);
+  --shadow-glow-soft: var(--glow-soft);
+  
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius: var(--radius);
 }
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+    /* Backgrounds */
+    --background: #151D30;
+    --background-secondary: #11192B;
+    --background-tertiary: #0F1729;
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+    /* Surfaces */
+    --surface: #41425D;
+    --surface-secondary: #4A4F73;
+    --surface-hover: #565C7D;
+    --surface-elevated: #5A628B;
+
+    /* Primary Accent */
+    --primary: #F3B07A;
+    --primary-hover: #F7BC8F;
+    --primary-light: #FFD1A8;
+    --primary-glow: rgba(243, 176, 122, 0.35);
+
+    /* Text */
+    --foreground: #F5F5F7;
+    --foreground-muted: #B6B8C8;
+    --foreground-subtle: #8A8FA8;
+    --foreground-disabled: #6D718A;
+
+    /* Borders */
+    --border: #565C7D;
+    --border-subtle: #4A4F73;
+    --border-focus: #F3B07A;
+
+    /* Inputs */
+    --input-background: #4A4F73;
+    --input-border: #565C7D;
+    --input-placeholder: #8A8FA8;
+    --input-focus: #F3B07A;
+
+    /* Semantic Aliases */
+    --card: var(--surface);
+    --card-foreground: var(--foreground);
+
+    --popover: var(--surface);
+    --popover-foreground: var(--foreground);
+
+    --muted: var(--surface-secondary);
+    --muted-foreground: var(--foreground-muted);
+
+    --accent: var(--primary);
+    --accent-foreground: #151D30;
+
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --info: #3B82F6;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.15);
+    --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.25);
+    --shadow-xl: 0 30px 80px rgba(0, 0, 0, 0.35);
+    --glow-primary: 0 0 20px rgba(243, 176, 122, 0.35);
+    --glow-soft: 0 0 40px rgba(243, 176, 122, 0.20);
+
+    /* Radius */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    --radius-2xl: 32px;
+    --radius: var(--radius-md); /* shadcn component default */
+
+    /* Typography */
+    --font-sans: "Raleway", Inter, system-ui, sans-serif;
+  }
+
+  [data-theme="light"] {
+    /* Backgrounds */
+    --background: #FAFAFB;
+    --background-secondary: #F3F4F6;
+    --background-tertiary: #E5E7EB;
+
+    /* Surfaces */
+    --surface: #FFFFFF;
+    --surface-secondary: #F3F4F6;
+    --surface-hover: #F9FAFB;
+    --surface-elevated: #FFFFFF;
+
+    /* Primary Accent */
+    --primary: #F3B07A;
+    --primary-hover: #E89A5E; /* Darkened peach for better contrast on hover */
+    --primary-light: #FDF0E6;
+    --primary-glow: rgba(243, 176, 122, 0.25);
+
+    /* Text */
+    --foreground: #151D30;
+    --foreground-muted: #565C7D;
+    --foreground-subtle: #8A8FA8;
+    --foreground-disabled: #A0A4B8;
+
+    /* Borders */
+    --border: #E5E7EB;
+    --border-subtle: #F3F4F6;
+    --border-focus: #F3B07A;
+
+    /* Inputs */
+    --input-background: #FFFFFF;
+    --input-border: #D1D5DB;
+    --input-placeholder: #9CA3AF;
+    --input-focus: #F3B07A;
+
+    /* Semantic Aliases */
+    --card: var(--surface);
+    --card-foreground: var(--foreground);
+
+    --popover: var(--surface);
+    --popover-foreground: var(--foreground);
+
+    --muted: var(--surface-secondary);
+    --muted-foreground: var(--foreground-muted);
+
+    --accent: var(--primary);
+    --accent-foreground: #151D30; /* Maintains high contrast inside primary buttons */
+
+    --success: #16A34A; /* Adjusted for WCAG AA on light background */
+    --warning: #D97706; /* Adjusted for WCAG AA on light background */
+    --danger: #DC2626; /* Adjusted for WCAG AA on light background */
+    --info: #2563EB; /* Adjusted for WCAG AA on light background */
+
+    /* Shadows */
+    /* Light mode needs softer, more subtle shadows */
+    --shadow-sm: 0 2px 4px rgba(21, 29, 48, 0.04);
+    --shadow-md: 0 8px 20px rgba(21, 29, 48, 0.08);
+    --shadow-lg: 0 16px 40px rgba(21, 29, 48, 0.12);
+    --shadow-xl: 0 30px 80px rgba(21, 29, 48, 0.16);
+    --glow-primary: 0 0 20px rgba(243, 176, 122, 0.4);
+    --glow-soft: 0 0 40px rgba(243, 176, 122, 0.25);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+  }
 }
